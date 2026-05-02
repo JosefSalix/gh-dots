@@ -1,0 +1,63 @@
+* Git setup
+
+** Global ignore
+
+#+begin_src shell
+# vim ~/.gitignore_global
+*.swp
+*.swo
+.DS_Store
+#+end_src
+
+** Gitconfig
+
+#+begin_src shell
+# vim ~/.gitconfig
+[user]
+  name = userName
+  email = userEmail
+
+[init]
+  defaultBranch = main
+
+[color]
+  ui = auto
+
+[pull]
+  rebase = false
+
+[core]
+  editor = vim
+  autocrlf = input
+
+[push]
+  default = simple
+
+[alias]
+  st = status
+  co = checkout
+  br = branch
+  ci = commit
+  lg = log --oneline --graph --decorate
+
+[core]
+  excludesfile = ~/.gitignore_global
+#+end_src
+
+** SSH key
+
+#+begin_src shell
+ssh-keygen -t ed25519 -C "userEmail" # vytvoreni klice
+eval "$(ssh-agent -s)"
+ssh-add ~/.ssh/id_ed25519 # pridani klice do ssh-agenta
+cat ~/.ssh/id_ed25519.pub # zkopirovani verejneho klice
+ssh -T git@github.com # test spojeni
+#+end_src
+
+** Clonning the repository
+
+#+begin_src shell
+git clone git@github.com:userName/repositoryName.git
+cd repositoryName
+git remote -v
+#+end_src
