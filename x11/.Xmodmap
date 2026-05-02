@@ -1,0 +1,10 @@
+! Caps Lock -> Right Ctrl
+keycode 66 = Control_R NoSymbol Control_R
+
+! Right Ctrl -> Caps Lock
+keycode 105 = Caps_Lock NoSymbol Caps_Lock
+
+! Clear and reassign modifiers
+clear Lock
+clear Control
+add Control = Control_L Control_R
